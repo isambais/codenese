@@ -1,18 +1,18 @@
-# CodeSense — Kod Analiz Platformu
+﻿# CodeSense â€” Kod Analiz Platformu
 
-Kaynak kodu analiz eden, dil tespiti, kalite skoru, bug riski, karmaşıklık ölçümü ve XAI (SHAP/LIME) açıklaması yapan web uygulaması.
+Kaynak kodu analiz eden, dil tespiti, kalite skoru, bug riski, karmaÅŸÄ±klÄ±k Ã¶lÃ§Ã¼mÃ¼ ve XAI (SHAP/LIME) aÃ§Ä±klamasÄ± yapan web uygulamasÄ±.
 
-## Özellikler
+## Ã–zellikler
 
-- **Dil Tespiti** — Python, JS, TS, Java, C++, C, Go, Rust, Ruby, PHP, Swift, Kotlin
-- **Kalite Skoru** — 0–100 arası heuristik skor
-- **Bug Riski** — Low / Medium / High + risk skoru (0–1)
-- **Cyclomatic Complexity** — `radon` kütüphanesi ile gerçek CC hesabı
-- **SHAP Görselleştirmesi** — hangi özelliğin skoru nasıl etkilediği
-- **Kod Tamamlama** — CodeBERT [MASK] token tahmini (HuggingFace API)
-- **PDF Rapor** — analiz sonucunu PDF olarak indirme
-- **Model Karşılaştırması** — CodeBERT / BiLSTM / Random Forest / SVM / Naive Bayes metrikleri
-- **REST API** — Swagger uyumlu 7 endpoint
+- **Dil Tespiti** â€” Python, JS, TS, Java, C++, C, Go, Rust, Ruby, PHP, Swift, Kotlin
+- **Kalite Skoru** â€” 0â€“100 arasÄ± heuristik skor
+- **Bug Riski** â€” Low / Medium / High + risk skoru (0â€“1)
+- **Cyclomatic Complexity** â€” `radon` kÃ¼tÃ¼phanesi ile gerÃ§ek CC hesabÄ±
+- **SHAP GÃ¶rselleÅŸtirmesi** â€” hangi Ã¶zelliÄŸin skoru nasÄ±l etkilediÄŸi
+- **Kod Tamamlama** â€” CodeBERT [MASK] token tahmini (HuggingFace API)
+- **PDF Rapor** â€” analiz sonucunu PDF olarak indirme
+- **Model KarÅŸÄ±laÅŸtÄ±rmasÄ±** â€” CodeBERT / BiLSTM / Random Forest / SVM / Naive Bayes metrikleri
+- **REST API** â€” Swagger uyumlu 7 endpoint
 
 ## Teknoloji Stack
 
@@ -20,7 +20,7 @@ Kaynak kodu analiz eden, dil tespiti, kalite skoru, bug riski, karmaşıklık ö
 |---|---|
 | Backend | Python 3.10, Flask 3, radon, pygments, fpdf2 |
 | Frontend | React 19, Vite, Monaco Editor, react-router-dom |
-| XAI | SHAP (heuristic), LIME görselleştirme |
+| XAI | SHAP (heuristic), LIME gÃ¶rselleÅŸtirme |
 | DL Modeli | Microsoft CodeBERT (HuggingFace) |
 | CI/CD | GitHub Actions |
 | Container | Docker Compose |
@@ -37,45 +37,45 @@ Kaynak kodu analiz eden, dil tespiti, kalite skoru, bug riski, karmaşıklık ö
 ```bash
 cd backend
 
-# Sanal ortam oluştur
+# Sanal ortam oluÅŸtur
 python -m venv venv
 
-# Aktifleştir (Windows)
+# AktifleÅŸtir (Windows)
 .\venv\Scripts\activate
 
-# Aktifleştir (Mac/Linux)
+# AktifleÅŸtir (Mac/Linux)
 source venv/bin/activate
 
-# Bağımlılıkları yükle
+# BaÄŸÄ±mlÄ±lÄ±klarÄ± yÃ¼kle
 pip install -r requirements.txt
 
-# .env dosyasını oluştur
+# .env dosyasÄ±nÄ± oluÅŸtur
 cp .env.example .env
-# (İsteğe bağlı: HF_API_KEY ekle)
+# (Ä°steÄŸe baÄŸlÄ±: HF_API_KEY ekle)
 
-# Sunucuyu başlat
+# Sunucuyu baÅŸlat
 python run.py
 ```
 
-Backend `http://localhost:5000` adresinde çalışır.
+Backend `http://localhost:5000` adresinde Ã§alÄ±ÅŸÄ±r.
 
 ### Frontend
 
 ```bash
 cd frontend
 
-# Bağımlılıkları yükle
+# BaÄŸÄ±mlÄ±lÄ±klarÄ± yÃ¼kle
 npm install
 
-# Geliştirme sunucusunu başlat
+# GeliÅŸtirme sunucusunu baÅŸlat
 npm run dev
 ```
 
-Frontend `http://localhost:5173` adresinde açılır.
+Frontend `http://localhost:5173` adresinde aÃ§Ä±lÄ±r.
 
 ## API Endpointleri
 
-| Method | Endpoint | Açıklama |
+| Method | Endpoint | AÃ§Ä±klama |
 |---|---|---|
 | POST | `/api/v1/analyze` | Tam analiz (dil + kalite + CC + SHAP) |
 | POST | `/api/v1/predict/language` | Sadece dil tespiti |
@@ -83,9 +83,9 @@ Frontend `http://localhost:5173` adresinde açılır.
 | POST | `/api/v1/complete` | [MASK] token tamamlama |
 | POST | `/api/v1/report` | PDF rapor indir |
 | GET  | `/api/v1/models` | Model metrikleri |
-| GET  | `/api/v1/health` | Sağlık kontrolü |
+| GET  | `/api/v1/health` | SaÄŸlÄ±k kontrolÃ¼ |
 
-### Örnek İstek
+### Ã–rnek Ä°stek
 
 ```bash
 curl -X POST http://localhost:5000/api/v1/analyze \
@@ -93,48 +93,48 @@ curl -X POST http://localhost:5000/api/v1/analyze \
   -d '{"code": "def fib(n):\n  return n if n<=1 else fib(n-1)+fib(n-2)"}'
 ```
 
-### Örnek Yanıt
+### Ã–rnek YanÄ±t
 
 ```json
 {
   "language": { "language": "Python", "confidence": 0.75 },
   "quality":  { "quality_score": 80, "bug_risk": "Low", "risk_score": 0.15 },
   "features": { "cyclomatic_complexity": 2, "line_count": 1 },
-  "shap":     { "shap_values": { "Girinti derinliği": 0.4, ... } }
+  "shap":     { "shap_values": { "Girinti derinliÄŸi": 0.4, ... } }
 }
 ```
 
-## HuggingFace API Key (İsteğe Bağlı)
+## HuggingFace API Key (Ä°steÄŸe BaÄŸlÄ±)
 
-[MASK] token tamamlama için gerçek CodeBERT modeli kullanmak istersen:
+[MASK] token tamamlama iÃ§in gerÃ§ek CodeBERT modeli kullanmak istersen:
 
-1. `https://huggingface.co/settings/tokens` adresinden ücretsiz token al
-2. `backend/.env` dosyasına ekle: `HF_API_KEY=hf_xxx...`
+1. `https://huggingface.co/settings/tokens` adresinden Ã¼cretsiz token al
+2. `backend/.env` dosyasÄ±na ekle: `HF_API_KEY=hf_xxx...`
 
-API key olmadan uygulama yine çalışır — tamamlama için yerel fallback öneriler döner.
+API key olmadan uygulama yine Ã§alÄ±ÅŸÄ±r â€” tamamlama iÃ§in yerel fallback Ã¶neriler dÃ¶ner.
 
-## Proje Yapısı
+## Proje YapÄ±sÄ±
 
 ```
 codesense/
-├── backend/
-│   ├── analysis/         # Dil tespiti, özellik çıkarımı, explainability
-│   ├── models/           # ML/DL model wrapperları, kod tamamlama
-│   ├── reports/          # PDF rapor üretimi
-│   ├── app/              # Flask uygulama ve API blueprint
-│   ├── tests/            # Pytest testleri
-│   ├── requirements.txt
-│   └── run.py
-├── frontend/
-│   ├── src/
-│   │   ├── pages/        # Analiz, Dashboard, Modeller, Tamamlama, API
-│   │   ├── components/   # Navbar, CodeEditor, ResultPanel, ScoreCard
-│   │   └── services/     # axios API client
-│   └── package.json
-├── notebooks/            # EDA Jupyter notebookları
-├── docs/
-├── docker-compose.yml
-└── .github/workflows/ci.yml
+â”œâ”€â”€ backend/
+â”‚   â”œâ”€â”€ analysis/         # Dil tespiti, Ã¶zellik Ã§Ä±karÄ±mÄ±, explainability
+â”‚   â”œâ”€â”€ models/           # ML/DL model wrapperlarÄ±, kod tamamlama
+â”‚   â”œâ”€â”€ reports/          # PDF rapor Ã¼retimi
+â”‚   â”œâ”€â”€ app/              # Flask uygulama ve API blueprint
+â”‚   â”œâ”€â”€ tests/            # Pytest testleri
+â”‚   â”œâ”€â”€ requirements.txt
+â”‚   â””â”€â”€ run.py
+â”œâ”€â”€ frontend/
+â”‚   â”œâ”€â”€ src/
+â”‚   â”‚   â”œâ”€â”€ pages/        # Analiz, Dashboard, Modeller, Tamamlama, API
+â”‚   â”‚   â”œâ”€â”€ components/   # Navbar, CodeEditor, ResultPanel, ScoreCard
+â”‚   â”‚   â””â”€â”€ services/     # axios API client
+â”‚   â””â”€â”€ package.json
+â”œâ”€â”€ notebooks/            # EDA Jupyter notebooklarÄ±
+â”œâ”€â”€ docs/
+â”œâ”€â”€ docker-compose.yml
+â””â”€â”€ .github/workflows/ci.yml
 ```
 
 ## Testler
@@ -143,3 +143,4 @@ codesense/
 cd backend
 python -m pytest tests/ -v
 ```
+
